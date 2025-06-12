@@ -283,7 +283,6 @@ var backendIP = getBackendIP();
             case 'profesor_grade_entry':  fetchSubjects();         break;
             case 'student-management': student_management(); break;
             case 'profesor-management': student_management(); break;
-            case 'student-management': student_management(); break;
             default:  console.warn(`No handler for tabId: ${tabId}`);
         }
     } catch (error) {
