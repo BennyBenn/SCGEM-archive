@@ -757,7 +757,7 @@ async function student_management() {
             <td>${student.matricula}</td>
             <td><input type="text" value="${student.matricula ?? ''}" data-field="matricula" data-id="${student.matricula}/></td>
             <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula} /></td>
-            <td><input type="number" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}" step="0.1" min="0" max="10" /></td>
+            <td><input type="text" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}/></td>
             <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula} /></td>
             <td><input type="text" value="${student.email ?? ''}" data-field="email" data-id="${student.matricula} /></td>
             <td><button class="save-grade-btn" data-matricula="${student.matricula}" onclick="saveGrade('${student.matricula}')">Guardar</button></td>
