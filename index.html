@@ -753,14 +753,23 @@ async function student_management() {
     students.forEach(student => {
         const row = document.createElement("tr");
 
+        // row.innerHTML = `
+        //     <td>${student.matricula}</td>
+        //     <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula} /></td>
+        //     <td><input type="text" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}/></td>
+        //     <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula} /></td>
+        //     <td><input type="text" value="${student.email ?? ''}" data-field="email" data-id="${student.matricula} /></td>
+        //     <td><button class="save-grade-btn" data-matricula="${student.matricula}" onclick="saveGrade('${student.matricula}')">Guardar</button></td>
+        // `;
         row.innerHTML = `
-            <td>${student.matricula}</td>
-            <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula} /></td>
-            <td><input type="text" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}/></td>
-            <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula} /></td>
-            <td><input type="text" value="${student.email ?? ''}" data-field="email" data-id="${student.matricula} /></td>
-            <td><button class="save-grade-btn" data-matricula="${student.matricula}" onclick="saveGrade('${student.matricula}')">Guardar</button></td>
-        `;
+  <td>${student.matricula}</td>
+  <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula}" /></td>
+  <td><input type="number" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}" step="1" min="1" max="12" /></td>
+  <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula}" /></td>
+  <td><input type="text" value="${student.email ?? ''}" data-field="email" data-id="${student.matricula}" /></td>
+  <td><button onclick="saveStudent('${student.matricula}')">Guardar</button></td>
+`;
+
         tbody.appendChild(row);
     });
     }
