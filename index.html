@@ -196,14 +196,21 @@
     </div>
   </div>
 
-<!-------------------------------------------------------------------- Panel de linuxero maestro -------------------------------------------------------------------------------->
-  <div id="super-admin-content" class="content-section">
-    <button class="logout-button" onclick="handleLogout()">Logout</button>
-    <h2>Administracion del sistema</h2>
-    <div class="nav-tabs">
-    <div class="nav-tab active" onclick="switchTab('user-management', this)">Usuarios</div>
-    <div class="nav-tab" onclick="switchTab('system-config', this)">Configuraciones</div>
-     <div class="nav-tab" onclick="switchTab('system-logs', this)">Registros</div>
+  <div id="student-management" class="tab-content">
+      <h3>Control de estudiantes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>MATRICULA</th>
+            <th>CARRERA</th>
+            <th>SEMESTRE</th>
+            <th>CELULAR</th>
+            <th>EMAIL</th>
+          </tr>
+        </thead>
+        <tbody id="student_management_table">
+        </tbody>
+      </table>
     </div>
   </div>
 
