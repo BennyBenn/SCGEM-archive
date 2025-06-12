@@ -301,6 +301,24 @@ app.post('/professor/saveGrade', (req, res) => {
   });
 });
 
+
+
+////////////////////////ADMINS//////////////
+app.get('/admin/getStudents', async (req, res) => {
+  const { id_materia, id_grupo } = req.query;
+ console.log("Received:", id_materia, id_grupo);
+ 
+  const query = `
+    SELECT 
+      *
+    FROM ALUMNOS;
+  `;
+  db.query(query, [id_materia, id_grupo], (err, results) => {
+    if (err) return res.status(500).json({ message: 'Database error' });
+    res.json(results);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
