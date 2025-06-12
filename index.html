@@ -280,6 +280,7 @@ var backendIP = getBackendIP();
             case 'teaching-schedule':     loadSubjectsProf();      break;
             case 'attendance-qr':         QR_CODE_GEN();           break;
             case 'profesor_grade_entry':  fetchSubjects();         break;
+            case 'student-management': student-management(); break;
             default:  console.warn(`No handler for tabId: ${tabId}`);
         }
     } catch (error) {
