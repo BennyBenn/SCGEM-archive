@@ -310,7 +310,7 @@ app.get('/admin/getStudents', async (req, res) => {
  
   const query = `
     SELECT 
-      *
+      matricula,carrera,semestre,celular,email
     FROM ALUMNOS;
   `;
   db.query(query, [id_materia, id_grupo], (err, results) => {
