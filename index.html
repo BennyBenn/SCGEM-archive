@@ -733,7 +733,7 @@ async function saveGrade(matricula) {
 
 ///////////////////////////////////////////////////////////////////////ADMINISTRATIVOIS/////////////////////
 
-async function loadSubjectsProf() {
+async function student_management() {
       const token = localStorage.getItem("authToken");
       const response = await fetch(`http://${backendIP}:3000/admin/getStudents`, { headers: { "Authorization": `Bearer ${token}` } });
       console.log("Token:", localStorage.getItem("authToken"));
