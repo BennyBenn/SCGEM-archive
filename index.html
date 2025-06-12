@@ -190,7 +190,7 @@
     <div class="nav-tabs">
 
       <div class="nav-tab active" onclick="switchTab('student-management', this)">Estudiantes</div>
-      <div class="nav-tab" onclick="switchTab('professor-management', this)">Profesores</div>
+      <div class="nav-tab" onclick="switchTab('profesor-management', this)">Profesores</div>
       <div class="nav-tab" onclick="switchTab('subject-management', this)">Materias</div>
       <div class="nav-tab" onclick="switchTab('reports', this)">Reportes</div>
     </div>
@@ -281,6 +281,8 @@ var backendIP = getBackendIP();
             case 'teaching-schedule':     loadSubjectsProf();      break;
             case 'attendance-qr':         QR_CODE_GEN();           break;
             case 'profesor_grade_entry':  fetchSubjects();         break;
+            case 'student-management': student_management(); break;
+            case 'profesor-management': student_management(); break;
             case 'student-management': student_management(); break;
             default:  console.warn(`No handler for tabId: ${tabId}`);
         }
@@ -743,7 +745,7 @@ async function student_management() {
       }
 
       const students = await response.json();
-      console.log("retorno",subjects);
+      console.log("retorno",students);
       
 
       const tbody = document.getElementById("profesor_grade_entry_table");
