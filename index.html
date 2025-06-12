@@ -767,13 +767,68 @@ async function student_management() {
   <td><input type="number" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}" step="1" min="1" max="12" /></td>
   <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula}" /></td>
   <td><input type="text" value="${student.email ?? ''}" data-field="email" data-id="${student.matricula}" /></td>
-  <td><button onclick="saveStudent('${student.matricula}')">Guardar</button></td>
+  <td><button onclick="saveStudentInfo('${student.matricula}')">Guardar</button></td>
 `;
 
         tbody.appendChild(row);
     });
     }
 
+    async function saveStudentInfo(matricula) {
+    console.log("Saving grade for matricula:", matricula);
+    
+    if (!currentSubjectInfo) {  alert("Error: No se ha seleccionado una materia");
+        return;
+    }
+
+    const button = document.querySelector(`button[data-matricula="${matricula}"]`);
+    const row = button.closest("tr");
+    
+    const calif_p1_input = row.querySelector('input[data-field="calif_p1"]');
+    const calif_p2_input = row.querySelector('input[data-field="calif_p2"]');
+    const calif_final_input = row.querySelector('input[data-field="calif_final"]');
+
+    const data = {
+        id_materia: currentSubjectInfo.id_materia,
+        matricula: matricula,
+        calif_p1: calif_p1_input.value || null,
+        calif_p2: calif_p2_input.value || null,
+        calif_final: calif_final_input.value || null,
+        ciclo_cursando: "2025-1" 
+    };
+
+    console.log("Data to send:", data);
+
+    try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch(`http://${backendIP}:3000/professor/saveGrade`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Server response:", result);
+        alert(result.message || "Calificación guardada exitosamente");
+        
+        button.style.backgroundColor = "#4CAF50";
+        button.textContent = "Guardado";
+        setTimeout(() => {
+            button.style.backgroundColor = "";
+            button.textContent = "Guardar";
+        }, 2000);
+
+    } catch (error) {
+        console.error("Error saving grade:", error);
+        alert("Error al guardar la calificación: " + error.message);
+    }
+}
 
   </script>
   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
