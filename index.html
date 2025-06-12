@@ -755,7 +755,6 @@ async function student_management() {
 
         row.innerHTML = `
             <td>${student.matricula}</td>
-            <td><input type="text" value="${student.matricula ?? ''}" data-field="matricula" data-id="${student.matricula}/></td>
             <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula} /></td>
             <td><input type="text" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}/></td>
             <td><input type="text" value="${student.celular ?? ''}" data-field="celular" data-id="${student.matricula} /></td>
