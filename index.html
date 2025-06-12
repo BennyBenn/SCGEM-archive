@@ -754,7 +754,7 @@ async function student_management() {
         const row = document.createElement("tr");
 
         row.innerHTML = `
-            <td>${student.user_name}</td>
+            <td>${student.matricula}</td>
             <td><input type="text" value="${student.matricula ?? ''}" data-field="matricula" data-id="${student.matricula}/></td>
             <td><input type="text" value="${student.carrera ?? ''}" data-field="carrera" data-id="${student.matricula} /></td>
             <td><input type="number" value="${student.semestre ?? ''}" data-field="semestre" data-id="${student.matricula}" step="0.1" min="0" max="10" /></td>
